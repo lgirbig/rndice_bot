@@ -36,7 +36,7 @@ def handle_responses(text: str, user: str) -> str:
     if 'phil' in processed and 'Leo' == user:
         counter = 1
         return f"Mein Erschaffer! Wie darf ich weiterhelfen?"
-    elif 'halt die fresse' in processed and 'Leo' == user:
+    elif 'pscht!' in processed and 'Leo' == user:
         counter = 0
         return None
     elif any(start in processed for start in wakeupcalls) and counter == 0:
@@ -45,7 +45,7 @@ def handle_responses(text: str, user: str) -> str:
     elif len(numbers) >= 1 and counter > 0:
         solutions = round(int(numbers[0]))
         counter = 2
-        return f"Okay es gibt also {solutions} Lösungen. Seid ihr zu dumm zu entscheiden?"
+        return f"Okay es gibt also {solutions} Lösungen. Soll ich für euch entscheiden?"
     elif any(yes in processed for yes in answers) and counter > 1:
         counter = 0
         return f"Dachte ich mir. Nehmt einfach die {randint(1, solutions)}. Die ist sowieso am besten..."
@@ -53,7 +53,7 @@ def handle_responses(text: str, user: str) -> str:
         counter = 0
         return f"Mir doch egal. Nehmt einfach die {randint(1, solutions)}. Die ist sowieso am besten..."
     elif counter > 0:
-        return 'Bist du dumm oder was?'
+        return 'Das verstehe ich nicht?'
     
 
 async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
